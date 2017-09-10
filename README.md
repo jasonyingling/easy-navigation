@@ -9,6 +9,7 @@ Easy Navigation is a fully styled and functional desktop and mobile navigation t
 ## Features
 * Support for `the_custom_logo()`.
 * Support for separate primary and mobile menu locations.
+* Support for multilevel menus to infinity. But I don't recommend going that deep.
 * Call attention to certain links using `.nv-callout` class.
 * Make any link activate the dropdown search bar using the class `.js-open-site-search`.
 * Remove the hover underline from any link using the class `.nv-no-underline`.
