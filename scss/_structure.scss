@@ -1,0 +1,36 @@
+// Width
+$nv_max_width: 1140px;
+$nv_padding: 40px;
+$nv_padding_mobile: 20px;
+
+// Colors
+$color__primary: #f46060;
+$color__nav: #ffffff;
+$color__nav-hover: #333333;
+$color__sub: #ffffff;
+$color__sub-background: rgba(51,51,51,0.9);
+$color__branding: #ffffff;
+
+// Break Points using Bourbon mixins
+$break640: new-breakpoint(max-width 640px 4);
+$break960: new-breakpoint(max-width 960px 12);
+$break1023: new-breakpoint(max-width 1023px 12);
+
+.nv-site-header {
+    background-image: -webkit-linear-gradient(53deg, #CD1A52 12%, #CF2E4F 46%, #D24C4C 100%);
+    background-image: -o-linear-gradient(53deg, #CD1A52 12%, #CF2E4F 46%, #D24C4C 100%);
+    background-image: linear-gradient(143deg, #CD1A52 12%, #CF2E4F 46%, #D24C4C 100%);
+}
+
+.nv-container {
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-between);
+    position: relative;
+    margin: 0 auto;
+    padding: 0 $nv_padding;
+
+    @include media($break640) {
+        padding: 0 $nv_padding_mobile;
+    }
+}

@@ -1,0 +1,316 @@
+.nv-main-navigation {
+	@include font-size(1);
+	clear: both;
+	display: block;
+
+	@include media($break960) {
+		display: none;
+	}
+
+	.menu {
+		> li {
+			&.menu-item-has-children, &.page_item_has_children {
+				> a {
+					&:after {
+						content: '▾';
+						margin-left: 0.5em;
+					}
+				}
+			}
+			> ul {
+				box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+			}
+		}
+	}
+
+	.nv-callout {
+		background: transparent;
+		border-radius: 100px;
+		border: 2px solid $color__nav;
+
+		a {
+			padding-left: 2em;
+			padding-right: 2em;
+		}
+
+		&:hover, &:focus {
+			background: $color__nav;
+
+			a {
+				color: $color__primary;
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.nv-no-underline {
+		&:hover, &:focus {
+			a {
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		li {
+			margin: 0 1.5em;
+
+			@include media($break1023) {
+				margin: 0 1.25em;
+			}
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&.menu-item-has-children, &.page_item_has_children {
+				&:hover,
+				&:focus {
+					a {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+
+			&:hover,
+			&:focus {
+				a {
+					&:before {
+						@include transform(scale3d(1, 1, 1));
+						@include transition-duration(0.4s);
+						@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+					}
+				}
+			}
+
+			a {
+				color: $color__nav;
+				padding: .625em 0;
+
+				&:before {
+					@include transition(transform 0.1s);
+					@include transform(scale3d(0, 1, 1));
+					content: '';
+					background-color: $color__nav;
+					width: 100%;
+					height: 3px;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+				}
+
+			}
+		}
+
+		ul {
+			@include transition(opacity 0.1s, top 0.1s);
+			background-color: $color__sub-background;
+			float: left;
+			position: absolute;
+			top: 1.5em;
+			left: -999em;
+			z-index: 99999;
+			opacity: 0;
+
+			&:before {
+				@include transition(transform 0.1s);
+				@include transform(scale3d(0, 1, 1));
+				content: '';
+				background-color: $color__nav;
+				width: 100%;
+				height: 3px;
+				position: absolute;
+				top: -3px;
+				left: 0;
+			}
+
+			li {
+				margin: 0;
+
+				a {
+					color: $color__nav;
+					padding: .5em 1em;
+
+					&:hover, &:focus {
+						background-color: rgba(255,255,255,0.25);
+					}
+
+					&:before {
+						display: none;
+					}
+				}
+			}
+
+			ul {
+				left: -999em;
+				top: 0;
+
+				&:after {
+					display: none;
+				}
+			}
+
+			li {
+				&:hover > ul,
+				&:focus > ul {
+					left: 100%;
+				}
+			}
+
+			a {
+				width: 220px;
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			@include transition-duration(0.5s);
+			@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+			top: 2.75em;
+			left: 50%;
+			margin-left: -110px;
+			opacity: 1;
+
+			li:hover > ul,
+			li.focus > ul {
+				left: auto;
+				margin-left: 0;
+			}
+
+			ul {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 100%;
+				opacity: 1;
+				background-color: rgba(0,0,0,.15);
+
+				&:before {
+					display: none;
+				}
+
+				li {
+					a {
+						padding: .5em 1.75em;
+					}
+
+					li {
+						a {
+							padding: .5em 2.25em;
+						}
+					}
+				}
+
+			}
+
+			&:before {
+				@include transform(scale3d(1, 1, 1));
+				@include transition-duration(1s);
+				@include transition-timing-function(cubic-bezier(0.4, 0, 0.2, 1));
+			}
+		}
+	}
+	li {
+		float: left;
+		position: relative;
+
+		&:hover > a,
+		&:focus > a {
+		}
+	}
+	a {
+		display: block;
+		text-decoration: none;
+	}
+}
+
+#mobile-navigation:not( .mm-menu ) {
+   display: none;
+}
+
+/*************************
+Hamburger button
+**************************/
+.hamburger-button {
+    box-sizing: border-box;
+    width: 45px;
+    height: 45px;
+    z-index: 4;
+	display: none;
+	position: relative;;
+
+	@include media($break960) {
+		display: block;
+	}
+
+	span,
+	&:before,
+	&:after {
+		@include transition(none 0.5s ease 0.5s);
+		@include transition-property(transform, top, bottom, right, opacity);
+		@include transition-duration(0.5s);
+		@include transition-timing-function(ease-in);
+		@include transition-delay(0.5s);
+		background: $color__nav;
+		content: '';
+		display: block;
+		width: 30px;
+		height: 5px;
+		position: absolute;
+		right: 7px;
+	}
+
+	&:before {
+		top: 10px;
+	}
+
+	span {
+		top: 20px;
+	}
+
+	&:after {
+		top: 30px;
+	}
+}
+
+.mm-opening {
+	.hamburger-button {
+
+		&:before {
+			@include transform(rotate(45deg));
+			top: 20px;
+		}
+
+		span {
+			opacity: 0;
+		}
+
+		&:after {
+			@include transform(rotate(-45deg));
+			top: 20px;
+		}
+	}
+}
