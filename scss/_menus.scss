@@ -33,7 +33,7 @@
 			padding-right: 2em;
 		}
 
-		&:hover, &:focus {
+		&:hover, &:focus, &.focus {
 			background: $color__nav;
 
 			a {
@@ -47,7 +47,7 @@
 	}
 
 	.nv-no-underline {
-		&:hover, &:focus {
+		&:hover, &:focus, &.focus {
 			a {
 				&:before {
 					display: none;
@@ -78,7 +78,8 @@
 
 			&.menu-item-has-children, &.page_item_has_children {
 				&:hover,
-				&:focus {
+				&:focus,
+				&.focus {
 					a {
 						&:before {
 							display: none;
@@ -88,7 +89,8 @@
 			}
 
 			&:hover,
-			&:focus {
+			&:focus,
+			&.focus {
 				a {
 					&:before {
 						@include transform(scale3d(1, 1, 1));
@@ -167,7 +169,8 @@
 
 			li {
 				&:hover > ul,
-				&:focus > ul {
+				&:focus > ul,
+				&.focus > ul {
 					left: 100%;
 				}
 			}
@@ -238,7 +241,8 @@
 		position: relative;
 
 		&:hover > a,
-		&:focus > a {
+		&:focus > a,
+		&.focus > a {
 		}
 	}
 	a {
